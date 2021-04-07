@@ -1,7 +1,14 @@
 # AutoTitle
 毕业设计：AutoTitle 文章摘要生成系统
 
-# 功能开发
+## 技术栈
+### 后端
+Python + fastapi + uvicorn
+
+### 前端（Android）
+（待定）
+
+## 功能开发
 
 - [ ]  用户模块
     - [x]  登录
