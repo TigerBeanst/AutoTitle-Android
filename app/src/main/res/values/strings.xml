@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AutoTitle 文章摘要</string>
+
+    <string name="login_title">登录</string>
+    <string name="login_username">用户名/邮箱</string>
+    <string name="login_password">密码</string>
+    <string name="login_button_login">登录</string>
+    <string name="login_button_reg">注册</string>
+    <string name="login_toast_login_success">登录成功</string>
+    <string name="login_toast_login_fail">登录失败，用户名/邮箱或密码错误</string>
+    <string name="login_toast_login_empty_username">用户名/邮箱不能为空</string>
+    <string name="login_toast_login_empty_password">密码不能为空</string>
+    <string name="login_bottom">如果继续，则表示您已经同意接受<a href='https://jakting.com'>服务条款</a>及<a href='https://jakting.com'>隐私权政策</a></string>
+</resources>
