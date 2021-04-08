@@ -1,4 +1,4 @@
-package com.jakting.rn6pan.api
+package com.jakting.autotitle.api
 
 import com.jakting.autotitle.api.data.News
 import com.jakting.autotitle.api.data.TokenBody
@@ -70,7 +70,7 @@ interface ApiParse {
 
     /**
      * 获取用户信息
-     * @param requestBody RequestBody
+     * @param access_token String
      * @return Observable<UserInfo>
      */
     @GET("user/info")
