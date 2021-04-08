@@ -7,7 +7,13 @@ data class TokenBody(
 )
 
 data class UserInfo(
-    val nickname:String,
+    val nickname: String,
     val username: String,
     val email: String
+)
+
+data class LoginStatus(
+    val isLogin: Boolean,
+    val username: String,
+    val password: String
 )
