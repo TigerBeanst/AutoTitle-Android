@@ -4,4 +4,6 @@
     <color name="colorFileFont">#ffffff</color>
     <color name="colorFileFontSecond">#2C2C2C</color>
     <color name="colorGreyLight">#535353</color>
+
+    <color name="colorContent">#ffffff</color>
 </resources>
