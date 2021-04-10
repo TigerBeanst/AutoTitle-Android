@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.drake.brv.utils.divider
 import com.drake.brv.utils.linear
 import com.drake.brv.utils.models
 import com.drake.brv.utils.setup
@@ -21,6 +25,7 @@ import com.jakting.autotitle.utils.RetrofitCallback
 import com.jakting.autotitle.utils.tools.getErrorString
 import com.jakting.autotitle.utils.tools.logd
 import kotlinx.android.synthetic.main.fragment_headline.*
+
 
 class HeadlineFragment : Fragment() {
 
@@ -51,15 +56,27 @@ class HeadlineFragment : Fragment() {
             requestNewsList("headline", start * 10, 10)
         }.setEnableLoadMore(true).setEnableAutoLoadMore(true)
 
-        recycler_headline.linear().setup {
+        recycler_headline
+            .linear().divider(R.drawable.divider)
+            .setup {
             addType<NewObject>(R.layout.item_new_object)
             onBind {
-                val itemImg = findView<ImageView>(R.id.item_img)
-                Glide.with(requireActivity()).load(getModel<NewObject>().pic).into(itemImg)
+                val newBackground = findView<ImageView>(R.id.new_background)
+                val newTextLine = findView<LinearLayout>(R.id.new_text_line)
+                val newTextSrc = findView<TextView>(R.id.new_text_src)
+                newTextSrc.post {
+                    val layoutParams: ViewGroup.LayoutParams = newTextLine.layoutParams
+                    layoutParams.width = newTextSrc.width
+                    newTextLine.layoutParams = layoutParams
+                }
+                Glide.with(requireActivity())
+                    .load(getModel<NewObject>().pic)
+                    .centerCrop()
+                    .into(newBackground)
             }
-            onClick(R.id.news_list_item) {
-                when(it){
-                    R.id.news_list_item -> {
+            onClick(R.id.new_layout) {
+                when (it) {
+                    R.id.new_layout -> {
                         val intent = Intent(requireActivity(), ReadActivity::class.java)
                         intent.putExtra("newObject", Gson().toJson(getModel<NewObject>()))
                         startActivity(intent)

@@ -1,11 +1,17 @@
 package com.jakting.autotitle.ui.my
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.drake.brv.utils.linear
 import com.drake.brv.utils.setup
 import com.jakting.autotitle.R
@@ -37,7 +43,10 @@ class MyFragment : Fragment() {
                 recycler_my.linear().setup {
                     addType<NewObject>(R.layout.item_new_object)
                     onBind {
-                        findView<TextView>(R.id.item_title).text = getModel<NewObject>().title
+                        val newBackground = findView<ImageView>(R.id.new_background)
+                        Glide.with(requireActivity())
+                            .load(getModel<NewObject>().pic)
+                            .into(newBackground)
                     }
                 }.models = news.result.result.list
             }

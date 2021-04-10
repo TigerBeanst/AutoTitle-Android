@@ -1,96 +1,77 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="newObject"
             type="com.jakting.autotitle.api.data.NewObject" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/new_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp">
 
-        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/news_list_item"
-            style="@style/Widget.MaterialComponents.CardView"
+        <ImageView
+            android:id="@+id/new_background"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient"
+            android:shadowColor="@color/colorBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:id="@+id/new_text_line"
+                android:layout_width="55dp"
+                android:layout_height="3dp"
+                android:background="@color/colorBackground"
+                android:orientation="vertical" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="0.7"
-                    android:orientation="vertical"
-                    android:paddingRight="5dp">
+            <TextView
+                android:id="@+id/new_text_src"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:textSize="16sp"
+                android:fontFamily="@font/notoserifsc_semibold"
+                android:text="@{String.valueOf(newObject.src)}"
+                android:textColor="@color/colorBackground" />
+        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/item_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.58"
-                        android:text="@{String.valueOf(newObject.title)}"
-                        android:maxLines="2"
-                        android:ellipsize="end"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/new_text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="20sp"
+            android:text="@{String.valueOf(newObject.title)}"
+            android:textColor="@color/colorBackground"
+            android:fontFamily="@font/notoserifsc_bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="0.05"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/item_ptime"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{String.valueOf(newObject.time)}"
-                            android:textColor="@android:color/darker_gray"
-                            android:textSize="12dp" />
-
-                        <TextView
-                            android:id="@+id/item_source"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="@{String.valueOf(newObject.src)}"
-                            android:textColor="@android:color/darker_gray"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="0.3"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/item_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_outline_account_circle" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
