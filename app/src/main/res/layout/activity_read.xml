@@ -35,8 +35,9 @@
                 android:id="@+id/read_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/fzbys"
+                android:fontFamily="@font/notoserifsc_black"
                 android:textColor="@color/colorContent"
+                android:textIsSelectable="true"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -67,8 +68,9 @@
                     android:layout_margin="25dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:fontFamily="@font/fzbys"
+                    android:fontFamily="@font/notoserifsc_semibold"
                     android:text="@string/read_autotitle_loading"
+                    android:textIsSelectable="true"
                     android:textSize="20sp"
                     android:textStyle="italic" />
             </androidx.cardview.widget.CardView>
@@ -78,10 +80,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
+                android:textIsSelectable="true"
                 android:textSize="18sp"
                 android:textColor="@color/colorContent"
                 android:lineSpacingExtra="8dp"
-                android:fontFamily="@font/fzbys"
+                android:fontFamily="@font/notoserifsc_medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/read_card_autotitle" />
