@@ -1,5 +1,6 @@
 package com.jakting.autotitle.api
 
+import com.jakting.autotitle.api.data.AutoTitleObject
 import com.jakting.autotitle.api.data.News
 import com.jakting.autotitle.api.data.TokenBody
 import com.jakting.autotitle.api.data.UserInfo
@@ -52,10 +53,6 @@ toast(getString(R.string.action_fail))
 
 interface ApiParse {
 
-    /*
-    登录请求
-     */
-
     /**
      * 传递用户名密码，获取 access_token
      * @param requestBody RequestBody
@@ -63,10 +60,6 @@ interface ApiParse {
      */
     @POST("auth/token")
     fun getToken(@Body requestBody: RequestBody): Observable<TokenBody>
-
-    /*
-    用户信息
-     */
 
     /**
      * 获取用户信息
@@ -78,20 +71,32 @@ interface ApiParse {
         @Header("Authorization") access_token: String
     ): Observable<UserInfo>
 
-
-    /*
-    用户信息
-     */
-
     /**
-     * 获取用户信息
-     * @param requestBody RequestBody
-     * @return Observable<UserInfo>
+     * 获取新闻
+     * @param access_token String
+     * @param kind String
+     * @param start String
+     * @param count String
+     * @return Observable<News>
      */
-    @GET("user/info")
+    @GET("data/news/{kind}/{start}/{count}")
     fun getNews(
         @Header("Authorization") access_token: String,
-        @Body requestBody: RequestBody
+        @Path("kind") kind: String,
+        @Path("start") start: String,
+        @Path("count") count: String
     ): Observable<News>
+
+    /**
+     * 获取摘要
+     * @param access_token String
+     * @param requestBody RequestBody
+     * @return Observable<AutoTitleObject>
+     */
+    @POST("data/autotitle")
+    fun getAutoTitle(
+        @Header("Authorization") access_token: String,
+        @Body requestBody: RequestBody
+    ): Observable<AutoTitleObject>
 
 }

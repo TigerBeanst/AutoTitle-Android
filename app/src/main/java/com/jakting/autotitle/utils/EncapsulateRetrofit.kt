@@ -3,6 +3,7 @@ package com.jakting.autotitle.utils
 import com.github.simonpercic.oklog3.OkLogInterceptor
 import com.jakting.autotitle.BuildConfig
 import com.jakting.autotitle.api.ApiParse
+import com.jakting.autotitle.utils.tools.API_BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
