@@ -1,0 +1,96 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="newObject"
+            type="com.jakting.autotitle.api.data.NewObject" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/news_list_item"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="0.7"
+                    android:orientation="vertical"
+                    android:paddingRight="5dp">
+
+                    <TextView
+                        android:id="@+id/item_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.58"
+                        android:text="@{String.valueOf(newObject.title)}"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.05"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/item_ptime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(newObject.time)}"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/item_source"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@{String.valueOf(newObject.src)}"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.3"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/item_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_outline_account_circle" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>
