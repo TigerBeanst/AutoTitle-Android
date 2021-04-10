@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">AutoTitle 文章摘要</string>
+    <string name="token_fail">鉴权状态异常，请重新登录</string>
 
+    <!-- Splash / 登录-->
     <string name="login_title">登录</string>
     <string name="login_username">用户名/邮箱</string>
     <string name="login_password">密码</string>
@@ -11,4 +13,12 @@
     <string name="login_toast_login_empty_username">用户名/邮箱不能为空</string>
     <string name="login_toast_login_empty_password">密码不能为空</string>
     <string name="login_bottom">如果继续，则表示您已经同意接受<a href='https://jakting.com'>服务条款</a>及<a href='https://jakting.com'>隐私权政策</a></string>
+
+    <!-- 主页面 -->
+    <string name="main_bottom_title_headline">头条</string>
+    <string name="main_bottom_title_category">栏目</string>
+    <string name="main_bottom_title_my">我的</string>
+
+    <!--文章页面-->
+    <string name="read_autotitle_loading">生成中……</string>
 </resources>
