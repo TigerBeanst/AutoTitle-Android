@@ -1,7 +1,7 @@
 package com.jakting.autotitle.user
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.jakting.autotitle.R
 
 class RegisterActivity : AppCompatActivity() {
