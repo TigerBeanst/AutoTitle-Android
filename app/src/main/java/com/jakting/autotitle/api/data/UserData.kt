@@ -2,18 +2,17 @@ package com.jakting.autotitle.api.data
 
 
 data class TokenBody(
-    val access_token: String,
-    val token_type: String
+    var access_token: String,
+    var token_type: String
 )
 
 data class UserInfo(
-    val nickname: String,
-    val username: String,
-    val email: String
+    var nickname: String,
+    var username: String,
+    var email: String
 )
 
 data class LoginStatus(
-    val isLogin: Boolean,
-    val username: String,
-    val password: String
+    var username: String,
+    var password: String
 )
