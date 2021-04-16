@@ -3,7 +3,7 @@ package com.jakting.autotitle.api.data
 
 data class TokenBody(
     var access_token: String,
-    var token_type: String
+    var refresh_token: String
 )
 
 data class UserInfo(
