@@ -8,8 +8,6 @@ import com.jakting.autotitle.utils.MyApplication
 import com.jakting.autotitle.utils.MyApplication.Companion.userInfo
 import com.jakting.autotitle.utils.RetrofitCallback
 import com.jakting.autotitle.utils.tools.*
-import okhttp3.MediaType
-import okhttp3.RequestBody
 
 
 fun getTokenBodyMethod(username: String, password: String, callback: RetrofitCallback) {

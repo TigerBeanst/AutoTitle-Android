@@ -8,8 +8,6 @@ import com.jakting.autotitle.utils.RetrofitCallback
 import com.jakting.autotitle.utils.tools.bearer
 import com.jakting.autotitle.utils.tools.getPostBody
 import com.jakting.autotitle.utils.tools.logd
-import okhttp3.MediaType
-import okhttp3.RequestBody
 
 fun getNewsListMethod(kind: String, start: Int, count: Int, callback: RetrofitCallback) {
     accessAPI(

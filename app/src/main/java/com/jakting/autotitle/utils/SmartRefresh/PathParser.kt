@@ -2,7 +2,6 @@ package com.jakting.autotitle.utils.SmartRefresh
 
 import android.graphics.Matrix
 import android.graphics.Path
-import android.os.Build
 import androidx.annotation.NonNull
 import java.util.*
 import kotlin.math.sqrt
