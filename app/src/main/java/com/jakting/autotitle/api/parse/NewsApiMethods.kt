@@ -6,6 +6,7 @@ import com.jakting.autotitle.api.data.News
 import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
 import com.jakting.autotitle.utils.RetrofitCallback
 import com.jakting.autotitle.utils.tools.bearer
+import com.jakting.autotitle.utils.tools.getPostBody
 import com.jakting.autotitle.utils.tools.logd
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -27,12 +28,10 @@ fun getNewsListMethod(kind: String, start: Int, count: Int, callback: RetrofitCa
     }
 }
 
-fun getAutoTitleMethod(content:String, callback: RetrofitCallback) {
-    val createDestinationPostBody: RequestBody =
-        RequestBody.create(
-            MediaType.parse("application/json"),
-            "{\"content\":\"$content\"}"
-        )
+fun getAutoTitleMethod(content: String, callback: RetrofitCallback) {
+    val createDestinationPostBody = getPostBody(
+        "{\"content\":\"$content\"}"
+    )
     accessAPI(
         {
             getAutoTitle(
