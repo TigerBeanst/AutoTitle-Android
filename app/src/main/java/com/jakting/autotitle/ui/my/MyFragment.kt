@@ -32,25 +32,25 @@ class MyFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        getNewsListMethod("science", 0, 10, object : RetrofitCallback {
-            override fun onSuccess(value: Any) {
-                val news = value as News
-                recycler_my.linear().setup {
-                    addType<NewObject>(R.layout.item_new_object)
-                    onBind {
-                        val newBackground = findView<ImageView>(R.id.new_background)
-                        Glide.with(requireActivity())
-                            .load(getModel<NewObject>().pic)
-                            .into(newBackground)
-                    }
-                }.models = news.result.result.list
-            }
-
-            override fun onError(t: Throwable) {
-                getErrorString(t)
-            }
-
-        })
+//        getNewsListMethod("science", 0, 10, object : RetrofitCallback {
+//            override fun onSuccess(value: Any) {
+//                val news = value as News
+//                recycler_my.linear().setup {
+//                    addType<NewObject>(R.layout.item_new_object)
+//                    onBind {
+//                        val newBackground = findView<ImageView>(R.id.new_background)
+//                        Glide.with(requireActivity())
+//                            .load(getModel<NewObject>().pic)
+//                            .into(newBackground)
+//                    }
+//                }.models = news.result.result.list
+//            }
+//
+//            override fun onError(t: Throwable) {
+//                getErrorString(t)
+//            }
+//
+//        })
 
 
     }
