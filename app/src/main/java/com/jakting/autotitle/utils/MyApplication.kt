@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.drake.brv.utils.BRV
 import com.jakting.autotitle.BR
-import com.jakting.autotitle.api.data.LoginStatus
 import com.jakting.autotitle.api.data.TokenBody
 import com.jakting.autotitle.api.data.UserInfo
 import com.jakting.autotitle.utils.SmartRefresh.DeliveryHeader
@@ -26,7 +25,6 @@ class MyApplication : Application() {
     }
 
     companion object {
-        var loginStatus: LoginStatus = LoginStatus("", "")
         var tokenBody = TokenBody("", "")
         lateinit var appContext: Context
         lateinit var sp: SharedPreferences

@@ -21,7 +21,6 @@ fun getNewsListMethod(kind: String, start: Int, count: Int, callback: RetrofitCa
             callback.onSuccess(news)
         }) { t ->
         logd("onError // getTokenBody")
-        t.printStackTrace()
         callback.onError(t)
     }
 }
@@ -41,7 +40,6 @@ fun getAutoTitleMethod(content: String, callback: RetrofitCallback) {
             callback.onSuccess(autoTitleObject)
         }) { t ->
         logd("onError // getTokenBody")
-        t.printStackTrace()
         callback.onError(t)
     }
 }

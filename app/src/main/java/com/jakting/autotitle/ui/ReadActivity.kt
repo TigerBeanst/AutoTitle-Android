@@ -37,11 +37,11 @@ class ReadActivity : AppCompatActivity() {
     private fun initView() {
         read_autotitle.text = "生成中……"
         read_title.text = newObject.title
-        read_author_time.text = "${newObject.src} · ${newObject.time}"
+        read_author_time.text = "${newObject.src}·${newObject.time}"
         print(newObject.content)
         read_content.text = Html.fromHtml(newObject.content, GlideImageGetter(read_content), null)
         val cleanContent = delHTMLTag(newObject.content)
-        logd(cleanContent)
+//        logd(cleanContent)
         requestAutoTitle(cleanContent)
     }
 

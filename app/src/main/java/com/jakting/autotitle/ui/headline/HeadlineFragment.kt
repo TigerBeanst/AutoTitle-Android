@@ -18,10 +18,13 @@ import com.google.gson.Gson
 import com.jakting.autotitle.R
 import com.jakting.autotitle.api.data.NewObject
 import com.jakting.autotitle.api.data.News
+import com.jakting.autotitle.api.data.AccessTokenBody
 import com.jakting.autotitle.api.parse.getNewsListMethod
+import com.jakting.autotitle.api.parse.getAccessTokenMethod
 import com.jakting.autotitle.ui.ReadActivity
+import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
 import com.jakting.autotitle.utils.RetrofitCallback
-import com.jakting.autotitle.utils.tools.getErrorString
+import com.jakting.autotitle.utils.tools.getErrorStatusCode
 import com.jakting.autotitle.utils.tools.logd
 import kotlinx.android.synthetic.main.fragment_headline.*
 
@@ -46,44 +49,65 @@ class HeadlineFragment : Fragment() {
         refreshLayout_headline.onRefresh {
             start = 0
             logd("进入 onRefresh，此时start为$start")
-            requestNewsList("headline", 0, 10)
+            checkAccessToken("headline", 0, 10)
         }.autoRefresh()
 
         refreshLayout_headline.onLoadMore {
             start++
             logd("进入 onLoadMore，此时start为$start")
-            requestNewsList("headline", start * 10, 10)
+            checkAccessToken("headline", start * 10, 10)
         }.setEnableLoadMore(true).setEnableAutoLoadMore(true)
 
         recycler_headline
             .linear().divider(R.drawable.divider)
             .setup {
-            addType<NewObject>(R.layout.item_new_object)
-            onBind {
-                val newBackground = findView<ImageView>(R.id.new_background)
-                val newTextLine = findView<LinearLayout>(R.id.new_text_line)
-                val newTextSrc = findView<TextView>(R.id.new_text_src)
-                newTextSrc.post {
-                    val layoutParams: ViewGroup.LayoutParams = newTextLine.layoutParams
-                    layoutParams.width = newTextSrc.width
-                    newTextLine.layoutParams = layoutParams
+                addType<NewObject>(R.layout.item_new_object)
+                onBind {
+                    val newBackground = findView<ImageView>(R.id.new_background)
+                    val newTextLine = findView<LinearLayout>(R.id.new_text_line)
+                    val newTextSrc = findView<TextView>(R.id.new_text_src)
+                    newTextSrc.post {
+                        val layoutParams: ViewGroup.LayoutParams = newTextLine.layoutParams
+                        layoutParams.width = newTextSrc.width
+                        newTextLine.layoutParams = layoutParams
+                    }
+                    Glide.with(requireActivity())
+                        .load(getModel<NewObject>().pic)
+                        .centerCrop()
+                        .into(newBackground)
                 }
-                Glide.with(requireActivity())
-                    .load(getModel<NewObject>().pic)
-                    .centerCrop()
-                    .into(newBackground)
-            }
-            onClick(R.id.new_layout) {
-                when (it) {
-                    R.id.new_layout -> {
-                        val intent = Intent(requireActivity(), ReadActivity::class.java)
-                        intent.putExtra("newObject", Gson().toJson(getModel<NewObject>()))
-                        startActivity(intent)
+                onClick(R.id.new_layout) {
+                    when (it) {
+                        R.id.new_layout -> {
+                            val intent = Intent(requireActivity(), ReadActivity::class.java)
+                            intent.putExtra("newObject", Gson().toJson(getModel<NewObject>()))
+                            startActivity(intent)
+                        }
                     }
                 }
             }
-        }
 
+    }
+
+    private fun checkAccessToken(kind: String, start: Int, count: Int) {
+        if (tokenBody.access_token == "") {
+            logd("此时 access_token 为空")
+            getAccessTokenMethod(object : RetrofitCallback {
+                override fun onSuccess(value: Any) {
+                    val accessTokenBody = value as AccessTokenBody
+                    tokenBody.access_token = accessTokenBody.access_token
+                    logd("所返回的token为：${accessTokenBody.access_token}")
+                    requestNewsList(kind, start, count)
+                }
+
+                override fun onError(t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+        } else {
+            requestNewsList(kind, start, count)
+        }
     }
 
     private fun requestNewsList(kind: String, start: Int, count: Int) {
@@ -100,7 +124,21 @@ class HeadlineFragment : Fragment() {
             }
 
             override fun onError(t: Throwable) {
-                getErrorString(t)
+                logd("错误码是${getErrorStatusCode(t)}")
+                if (getErrorStatusCode(t) == 401) {
+                    //access_token炸了
+                    getAccessTokenMethod(object : RetrofitCallback {
+                        override fun onSuccess(value: Any) {
+                            val refreshTokenBody = value as AccessTokenBody
+                            tokenBody.access_token = refreshTokenBody.access_token
+                        }
+
+                        override fun onError(t: Throwable) {
+                            TODO("Not yet implemented")
+                        }
+
+                    })
+                }
             }
 
         })

@@ -1,13 +1,14 @@
 package com.jakting.autotitle.api.parse
 
-import com.jakting.autotitle.R
 import com.jakting.autotitle.api.accessAPI
+import com.jakting.autotitle.api.data.AccessTokenBody
 import com.jakting.autotitle.api.data.TokenBody
-import com.jakting.autotitle.api.data.UserInfo
-import com.jakting.autotitle.utils.MyApplication
-import com.jakting.autotitle.utils.MyApplication.Companion.userInfo
+import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
 import com.jakting.autotitle.utils.RetrofitCallback
-import com.jakting.autotitle.utils.tools.*
+import com.jakting.autotitle.utils.tools.bearer
+import com.jakting.autotitle.utils.tools.getPostBody
+import com.jakting.autotitle.utils.tools.logd
+import com.jakting.autotitle.utils.tools.md5
 
 
 fun getTokenBodyMethod(username: String, password: String, callback: RetrofitCallback) {
@@ -19,27 +20,24 @@ fun getTokenBodyMethod(username: String, password: String, callback: RetrofitCal
         {
             getToken(createDestinationPostBody)
         }, { objectReturn ->
-            MyApplication.tokenBody = objectReturn as TokenBody
-            callback.onSuccess(MyApplication.tokenBody)
+            tokenBody = objectReturn as TokenBody
+            callback.onSuccess(tokenBody)
         }) { t ->
         logd("onError // getTokenBody")
-        t.printStackTrace()
         callback.onError(t)
     }
 }
 
-fun getUserInfoMethod(callback: RetrofitCallback) {
+fun getAccessTokenMethod(callback: RetrofitCallback) {
+    logd("tokenBody.refresh_token为${tokenBody.refresh_token}")
     accessAPI(
         {
-            getUserInfo(bearer(MyApplication.tokenBody.access_token))
+            getAccessToken(bearer(tokenBody.refresh_token))
         }, { objectReturn ->
-            userInfo = objectReturn as UserInfo
-            toast(MyApplication.appContext.getString(R.string.login_toast_login_success))
-            callback.onSuccess(userInfo)
-
+            val accessTokenBody = objectReturn as AccessTokenBody
+            callback.onSuccess(accessTokenBody)
         }) { t ->
-        logd("onError // getUserInfo")
-        t.printStackTrace()
+        logd("onError // getRefreshTokenMethod")
         callback.onError(t)
     }
 }

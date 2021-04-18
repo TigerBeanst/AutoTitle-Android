@@ -9,12 +9,11 @@ import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.AlphaAnimation
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
-import com.jakting.autotitle.api.data.LoginStatus
+import com.jakting.autotitle.api.data.AccessTokenBody
 import com.jakting.autotitle.api.data.TokenBody
+import com.jakting.autotitle.api.parse.getAccessTokenMethod
 import com.jakting.autotitle.api.parse.getTokenBodyMethod
 import com.jakting.autotitle.api.parse.getUserInfoMethod
-import com.jakting.autotitle.utils.MyApplication.Companion.loginStatus
 import com.jakting.autotitle.utils.MyApplication.Companion.sp
 import com.jakting.autotitle.utils.MyApplication.Companion.spe
 import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
@@ -31,13 +30,10 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         initView()
         Handler(Looper.getMainLooper()).postDelayed({
-            val loginStatusString = sp.getString("login_status", "")
-            if (loginStatusString != "") {
-                //说明有登录数据（但 access_token 不一定有效）
-                loginStatus =
-                    Gson().fromJson(loginStatusString, LoginStatus::class.java)
-                tokenBody =
-                    Gson().fromJson(sp.getString("token_body", ""), TokenBody::class.java)
+            val isLogin = sp.getBoolean("isLogin", false)
+            if (isLogin) {
+                //说明处于登录状态（但 token 不一定有效）
+                tokenBody.refresh_token = sp.getString("refresh_token", "").toString()
                 intentToMainActivity()
             } else {
                 //还没登陆，触发动画
@@ -106,16 +102,14 @@ class SplashActivity : AppCompatActivity() {
                     toast(getString(R.string.login_toast_login_empty_password))
                 }
                 else -> {
-                    loginStatus.username = Base64Util.encode(usernameInput)
-                    loginStatus.password = Base64Util.encode(passwordInput)
-                    logd("loginStatus.username = ${loginStatus.username}      loginStatus.password = ${loginStatus.password}")
-                    spe.putString("login_status", Gson().toJson(loginStatus))
-                    spe.apply()
                     getTokenBodyMethod(usernameInput, passwordInput, object : RetrofitCallback {
                         override fun onSuccess(value: Any) {
                             tokenBody = value as TokenBody
-                            spe.putString("token_body", Gson().toJson(tokenBody))
+                            //refresh_token 持久保存
+                            spe.putString("refresh_token", tokenBody.refresh_token)
+                            spe.putBoolean("isLogin", true)
                             spe.apply()
+                            //请求用户数据
                             getUserInfoMethod(object : RetrofitCallback {
                                 override fun onSuccess(value: Any) {
                                     intentToMainActivity()
