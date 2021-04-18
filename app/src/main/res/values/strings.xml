@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AutoTitle 文章摘要</string>
+    <string name="app_name">AutoTitle 新闻摘要</string>
     <string name="token_fail">鉴权状态异常，请重新登录</string>
 
     <!-- Splash / 登录-->
