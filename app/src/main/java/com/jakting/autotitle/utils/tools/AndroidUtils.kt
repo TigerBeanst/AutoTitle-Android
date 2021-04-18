@@ -29,15 +29,6 @@ fun View.sbarlong(message: CharSequence) =
 fun View.sbarin(message: CharSequence) =
     Snackbar.make(this, message, Snackbar.LENGTH_INDEFINITE)
 
-
-
-
-
-object Base64Util {
-    fun decode(str: String) = String(Base64.decode(str, Base64.DEFAULT))
-    fun encode(str: String) = String(Base64.encode(str.toByteArray(), Base64.DEFAULT))
-}
-
 fun bearer(str: String) = "Bearer $str"
 
 /**
