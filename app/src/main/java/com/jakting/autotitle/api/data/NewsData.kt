@@ -30,6 +30,30 @@ data class NewResult(
     var result: NewList
 )
 
+data class NewSearchObject(
+    var title: String,
+    var time: String,
+    var src: String,
+    var pic: String,
+    var url: String,
+    var weburl: String,
+    var content: String,
+    var gallery: String,
+    var addtime: Int
+)
+
+data class NewSearchList(
+    var keyword: String,
+    var num: Int,
+    var list: List<NewSearchObject>
+)
+
+data class NewSearchResult(
+    var status: Int,
+    var msg: String,
+    var result: NewSearchList
+)
+
 data class News(
     var code: String,
     var charge: String,
