@@ -1,12 +1,15 @@
 package com.jakting.autotitle.api
 
+import com.jakting.autotitle.R
 import com.jakting.autotitle.api.data.*
 import com.jakting.autotitle.api.parse.getAccessTokenMethod
 import com.jakting.autotitle.utils.EncapsulateRetrofit
+import com.jakting.autotitle.utils.MyApplication.Companion.appContext
 import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
 import com.jakting.autotitle.utils.RetrofitCallback
 import com.jakting.autotitle.utils.tools.getErrorStatusCode
 import com.jakting.autotitle.utils.tools.logd
+import com.jakting.autotitle.utils.tools.longtoast
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -33,29 +36,33 @@ fun accessAPI(
             onSuccess(AnyApiObject)
         }) { t ->
             t.printStackTrace()
-            if (getErrorStatusCode(t) == 401) {
-                logd("需要刷新access_token炸了")
-                // access_token炸了，需要刷新
-                getAccessTokenMethod(object : RetrofitCallback {
-                    override fun onSuccess(value: Any) {
-                        val refreshTokenBody = value as AccessTokenBody
-                        tokenBody.access_token = refreshTokenBody.access_token
-                        accessAPI(
-                            {
-                                useAPI()
-                            }, { AnyApiObject ->
-                                onSuccess(AnyApiObject)
-                            }) { tt ->
-                            logd("onError // getRefreshTokenMethod")
-                            onError(tt)
+            try {
+                if (getErrorStatusCode(t) == 401) {
+                    logd("需要刷新access_token炸了")
+                    // access_token炸了，需要刷新
+                    getAccessTokenMethod(object : RetrofitCallback {
+                        override fun onSuccess(value: Any) {
+                            val refreshTokenBody = value as AccessTokenBody
+                            tokenBody.access_token = refreshTokenBody.access_token
+                            accessAPI(
+                                {
+                                    useAPI()
+                                }, { AnyApiObject ->
+                                    onSuccess(AnyApiObject)
+                                }) { tt ->
+                                logd("onError // getRefreshTokenMethod")
+                                onError(tt)
+                            }
                         }
-                    }
 
-                    override fun onError(t: Throwable) {
+                        override fun onError(t: Throwable) {
 
-                    }
+                        }
 
-                })
+                    })
+                }
+            } catch (e: Exception) {
+                longtoast(appContext.getString(R.string.server_fail))
             }
 
             onError(t)

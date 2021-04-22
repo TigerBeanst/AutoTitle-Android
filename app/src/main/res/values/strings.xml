@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AutoTitle 新闻摘要</string>
     <string name="token_fail">鉴权状态异常，请重新登录</string>
+    <string name="server_fail">无法连接至服务器</string>
 
     <!-- Splash / 登录-->
     <string name="login_title">登录</string>
