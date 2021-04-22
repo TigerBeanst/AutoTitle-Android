@@ -2,17 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_digital"
+        android:id="@+id/navigation_headline"
+        android:orderInCategory="0"
         android:icon="@drawable/ic_outline_whatshot"
         android:title="@string/main_bottom_title_headline" />
 
     <item
-        android:id="@+id/navigation_phone"
+        android:id="@+id/navigation_category"
+        android:orderInCategory="1"
         android:icon="@drawable/ic_outline_category"
         android:title="@string/main_bottom_title_category" />
 
     <item
-        android:id="@+id/navigation_finance"
+        android:id="@+id/navigation_my"
+        android:orderInCategory="2"
         android:icon="@drawable/ic_outline_account_circle"
         android:title="@string/main_bottom_title_my" />
 

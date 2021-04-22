@@ -15,6 +15,7 @@ import com.jakting.autotitle.api.data.News
 import com.jakting.autotitle.api.parse.getNewsListMethod
 import com.jakting.autotitle.utils.RetrofitCallback
 import com.jakting.autotitle.utils.tools.getErrorString
+import com.jakting.autotitle.utils.tools.toast
 import kotlinx.android.synthetic.main.fragment_category.*
 
 class CategoryFragment : Fragment() {
@@ -26,12 +27,8 @@ class CategoryFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_category, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
 //        getNewsListMethod("science", 0, 10, object : RetrofitCallback {
 //            override fun onSuccess(value: Any) {
 //                val news = value as News

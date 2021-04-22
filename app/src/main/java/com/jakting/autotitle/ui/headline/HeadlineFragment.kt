@@ -40,11 +40,6 @@ class HeadlineFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_headline, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         refreshLayout_headline.onRefresh {
             start = 0
@@ -101,7 +96,7 @@ class HeadlineFragment : Fragment() {
                 }
 
                 override fun onError(t: Throwable) {
-                    TODO("Not yet implemented")
+
                 }
 
             })

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     app:stateEnabled="true"
     android:layout_height="match_parent"
-    tools:context=".ui.category.CategoryFragment">
+    tools:context=".ui.my.MyFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_my"
