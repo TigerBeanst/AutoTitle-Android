@@ -4,7 +4,7 @@ import android.content.Context
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-const val API_BASE_URL = "http://192.168.1.48:8000/"
+const val API_BASE_URL = "http://192.168.1.100:8000/"
 
 fun Context.dip2px(dp: Float): Float {
     val density: Float = this.resources.displayMetrics.density // 密度
