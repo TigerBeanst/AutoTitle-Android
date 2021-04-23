@@ -10,6 +10,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jakting.autotitle.ui.category.CategoryFragment
 import com.jakting.autotitle.ui.headline.HeadlineFragment
 import com.jakting.autotitle.ui.my.MyFragment
+import com.jakting.autotitle.utils.MyApplication
+import com.jakting.autotitle.utils.MyApplication.Companion.sp
+import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
 import com.jakting.autotitle.utils.tools.logd
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,6 +25,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        tokenBody.refresh_token = sp.getString("refresh_token", "").toString()
         setContentView(R.layout.activity_main)
         viewPaper.addOnPageChangeListener(this)
         nav_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)

@@ -33,7 +33,6 @@ class SplashActivity : AppCompatActivity() {
             val isLogin = sp.getBoolean("isLogin", false)
             if (isLogin) {
                 //说明处于登录状态（但 token 不一定有效）
-                tokenBody.refresh_token = sp.getString("refresh_token", "").toString()
                 intentToMainActivity()
             } else {
                 //还没登陆，触发动画
