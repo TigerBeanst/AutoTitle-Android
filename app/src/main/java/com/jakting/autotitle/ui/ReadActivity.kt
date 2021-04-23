@@ -1,8 +1,13 @@
 package com.jakting.autotitle.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Html
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import com.jakting.autotitle.R
 import com.jakting.autotitle.api.data.AutoTitleObject
@@ -14,6 +19,7 @@ import com.jakting.autotitle.utils.tools.delHTMLTag
 import com.jakting.autotitle.utils.tools.getErrorString
 import com.jakting.autotitle.utils.tools.logd
 import kotlinx.android.synthetic.main.activity_read.*
+import kotlinx.android.synthetic.main.layout_sheet_read.view.*
 
 
 class ReadActivity : AppCompatActivity() {
@@ -23,6 +29,14 @@ class ReadActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_read)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        if (supportActionBar != null) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar!!.title = getString(R.string.read_autotitle_actionbar_title)
+            toolbar.setNavigationOnClickListener {
+
+            }
+        }
         newObject = Gson().fromJson(intent.getStringExtra("newObject"), NewObject::class.java)
         initView()
         initHtml()
@@ -37,7 +51,15 @@ class ReadActivity : AppCompatActivity() {
     private fun initView() {
         read_autotitle.text = "生成中……"
         read_title.text = newObject.title
-        read_author_time.text = "${newObject.src}·${newObject.time}"
+        read_text_time.text = newObject.time
+        logd("1read_text_src.width为${read_text_src.width}")
+        read_text_src.text = newObject.src
+        read_text_src.post {
+            val layoutParams: ViewGroup.LayoutParams = read_text_line.layoutParams
+            logd("2read_text_src.width为${read_text_src.width}")
+            layoutParams.width = read_text_src.width
+            read_text_line.layoutParams = layoutParams
+        }
         print(newObject.content)
         read_content.text = Html.fromHtml(newObject.content, GlideImageGetter(read_content), null)
         val cleanContent = delHTMLTag(newObject.content)
@@ -51,7 +73,10 @@ class ReadActivity : AppCompatActivity() {
             override fun onSuccess(value: Any) {
                 val autoTitleObject = value as AutoTitleObject
                 read_autotitle.text = autoTitleObject.result
-//                read_content.text = HtmlSpanner(read_content.currentTextColor, read_content.textSize).fromHtml(newObject.content)
+                read_autotitle_title_origin.visibility = View.VISIBLE
+                read_autotitle_title_result.visibility = View.VISIBLE
+                read_autotitle_count_origin.text = autoTitleObject.original_length.toString()
+                read_autotitle_count_result.text = autoTitleObject.result_length.toString()
             }
 
             override fun onError(t: Throwable) {
@@ -61,4 +86,40 @@ class ReadActivity : AppCompatActivity() {
         })
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.read_autotitle_actionbar_text -> {
+                val view: View =
+                    LayoutInflater.from(this).inflate(R.layout.layout_sheet_read, null)
+                val bottomDialog = BottomSheetDialog(view.context)
+                bottomDialog.setContentView(view)
+                val mBehavior: BottomSheetBehavior<*> = BottomSheetBehavior.from(view.parent as View)
+                mBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                mBehavior.peekHeight = 0;
+                bottomDialog.show()
+                true
+            }
+            R.id.read_autotitle_actionbar_share -> {
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.putExtra(
+                    Intent.EXTRA_TEXT,
+                    getString(R.string.read_autotitle_actionbar_share_text) +
+                            newObject.title + "（" + newObject.weburl + "）"
+                )
+                intent.type = "text/plain"
+                startActivity(intent)
+                true
+            }
+            R.id.read_autotitle_actionbar_browser -> {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(newObject.weburl)))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_nav_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
 }

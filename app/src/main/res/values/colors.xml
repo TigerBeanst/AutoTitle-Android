@@ -4,24 +4,9 @@
     <color name="colorPrimaryLight">#48a697</color>
     <color name="colorPrimaryDark">#004c40</color>
     <color name="colorAccent">#48a697</color>
-    <color name="colorFont">#ffffff</color>
-    <color name="colorFontSecond">#f5f5f5</color>
     <color name="colorGrey">#757575</color>
     <color name="colorGreyLight">#DFDFDF</color>
-    <color name="colorGreen1">#038C3E</color>
-    <color name="colorGreen2">#038C65</color>
-    <color name="colorGreen3">#03A678</color>
-    <color name="colorGreen4">#01403A</color>
-    <color name="colorGreen5">#93AEBF</color>
-    <color name="colorRed">#bc0513</color>
     <color name="colorBackground">#f5f5f5</color>
-    <color name="colorToolbar">#000000</color>
-    <color name="colorFileFont">#000000</color>
-    <color name="colorFileFontSecond">#2C2C2C</color>
-    <color name="spotlightBackground">#BF000000</color>
-    <color name="offlineStatusDone">#70AEA4</color>
-    <color name="offlineStatusError">#F68B94</color>
-    <color name="offlineStatusDoing">#FFFFFF</color>
 
     <color name="colorContent">#000000</color>
 </resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/read_autotitle_actionbar_text"
+        android:icon="@drawable/ic_outline_text_fields_24"
+        android:title="@string/read_autotitle_actionbar_text"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/read_autotitle_actionbar_bookmark"
+        android:icon="@drawable/ic_outline_bookmark_border_24"
+        android:title="@string/read_autotitle_actionbar_bookmark"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/read_autotitle_actionbar_share"
+        android:icon="@drawable/ic_outline_share_24"
+        android:title="@string/read_autotitle_actionbar_share"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/read_autotitle_actionbar_browser"
+        android:icon="@drawable/ic_baseline_open_in_browser_24"
+        android:title="@string/read_autotitle_actionbar_browser"
+        app:showAsAction="always"/>
+
+</menu>

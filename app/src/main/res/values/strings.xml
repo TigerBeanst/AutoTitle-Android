@@ -22,4 +22,17 @@
 
     <!--文章页面-->
     <string name="read_autotitle_loading">生成中……</string>
+    <string name="read_autotitle_actionbar_title">阅读新闻</string>
+    <string name="read_autotitle_actionbar_text">文本调整</string>
+    <string name="read_autotitle_actionbar_text_sc">简体中文</string>
+    <string name="read_autotitle_actionbar_text_tc">繁體中文</string>
+    <string name="read_autotitle_actionbar_text_size">文字大小</string>
+    <string name="read_autotitle_actionbar_text_size_default">恢复默认</string>
+    <string name="read_autotitle_actionbar_bookmark">收藏</string>
+    <string name="read_autotitle_actionbar_share">分享</string>
+    <string name="read_autotitle_actionbar_share_text">【分享自 AutoTitle 新闻摘要】</string>
+    <string name="read_autotitle_actionbar_browser">在浏览器中打开</string>
+    <string name="read_autotitle_title">文本摘要：</string>
+    <string name="read_autotitle_title_origin">原文长度：</string>
+    <string name="read_autotitle_title_result">摘要长度：</string>
 </resources>
