@@ -27,7 +27,9 @@
     <string name="read_autotitle_actionbar_text_sc">简体中文</string>
     <string name="read_autotitle_actionbar_text_tc">繁體中文</string>
     <string name="read_autotitle_actionbar_text_size">文字大小</string>
+    <string name="read_autotitle_actionbar_text_size_set">已设置字号为</string>
     <string name="read_autotitle_actionbar_text_size_default">恢复默认</string>
+    <string name="read_autotitle_actionbar_text_size_default_toast">已恢复默认字号18</string>
     <string name="read_autotitle_actionbar_bookmark">收藏</string>
     <string name="read_autotitle_actionbar_share">分享</string>
     <string name="read_autotitle_actionbar_share_text">【分享自 AutoTitle 新闻摘要】</string>
@@ -35,4 +37,22 @@
     <string name="read_autotitle_title">文本摘要：</string>
     <string name="read_autotitle_title_origin">原文长度：</string>
     <string name="read_autotitle_title_result">摘要长度：</string>
+
+    <!-- 栏目页面分类 -->
+    <string name="category_chip_group_1">实时</string>
+    <string name="category_chip_group_2">国内</string>
+    <string name="category_chip_group_3">国际</string>
+    <string name="category_chip_group_4">政治</string>
+    <string name="category_chip_group_5">财经</string>
+    <string name="category_chip_group_6">体育</string>
+    <string name="category_chip_group_7">娱乐</string>
+    <string name="category_chip_group_8">军事</string>
+    <string name="category_chip_group_9">教育</string>
+    <string name="category_chip_group_10">科技</string>
+    <string name="category_chip_group_11">NBA</string>
+    <string name="category_chip_group_12">股票</string>
+    <string name="category_chip_group_13">星座</string>
+    <string name="category_chip_group_14">女性</string>
+    <string name="category_chip_group_15">健康</string>
+    <string name="category_chip_group_16">育儿</string>
 </resources>

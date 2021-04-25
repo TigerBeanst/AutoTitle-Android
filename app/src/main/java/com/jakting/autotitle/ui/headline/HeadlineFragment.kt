@@ -28,7 +28,6 @@ import com.jakting.autotitle.utils.tools.getErrorStatusCode
 import com.jakting.autotitle.utils.tools.logd
 import kotlinx.android.synthetic.main.fragment_headline.*
 
-
 class HeadlineFragment : Fragment() {
 
     var start = 0
@@ -41,20 +40,20 @@ class HeadlineFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        refreshLayout_headline.onRefresh {
+        headline_refreshLayout.onRefresh {
             start = 0
             logd("进入 onRefresh，此时start为$start")
             checkAccessToken("headline", 0, 10)
         }.autoRefresh()
 
-        refreshLayout_headline.onLoadMore {
+        headline_refreshLayout.onLoadMore {
             start++
             logd("进入 onLoadMore，此时start为$start")
             checkAccessToken("headline", start * 10, 10)
         }.setEnableLoadMore(true).setEnableAutoLoadMore(true)
 
-        recycler_headline
-            .linear().divider(R.drawable.divider)
+        headline_recyclerView
+            .linear()
             .setup {
                 addType<NewObject>(R.layout.item_new_object)
                 onBind {
@@ -110,12 +109,12 @@ class HeadlineFragment : Fragment() {
             override fun onSuccess(value: Any) {
                 val newList = (value as News).result.result.list as ArrayList<NewObject>
                 if (start == 0) {
-                    recycler_headline.models = newList
+                    headline_recyclerView.models = newList
                 } else {
-                    refreshLayout_headline.addData(newList)
+                    headline_refreshLayout.addData(newList)
                 }
 
-                refreshLayout_headline.finishRefresh()
+                headline_refreshLayout.finishRefresh()
             }
 
             override fun onError(t: Throwable) {

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:realtimeBlurRadius="30dp"
+        app:realtimeOverlayColor="#1000" />
+
+    <HorizontalScrollView
+        android:id="@+id/category_chip_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/category_chip_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_1"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/category_chip_group_1" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_2"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_2" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_3"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_3" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_4"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_4" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_5"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_5" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_6"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_6" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_7"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_7" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_8"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_8" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_9"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_9" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_10"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_10" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_11"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_11" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_12"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_12" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_13"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_13" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_14"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_14" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_15"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_15" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/category_chip_group_16"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/category_chip_group_16" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+</FrameLayout>

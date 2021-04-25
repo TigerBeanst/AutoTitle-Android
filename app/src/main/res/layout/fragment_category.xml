@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.drake.brv.PageRefreshLayout
-    android:id="@+id/refreshLayout_category"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    app:stateEnabled="true"
     android:layout_height="match_parent"
-    tools:context=".ui.category.CategoryFragment">
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_category"
+    <com.drake.brv.PageRefreshLayout
+        android:id="@+id/category_refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:stateEnabled="true"
+        tools:context=".ui.category.CategoryFragment">
 
-</com.drake.brv.PageRefreshLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/category_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingTop="50dp" />
+
+            <include layout="@layout/layout_chip_category" />
+        </FrameLayout>
+    </com.drake.brv.PageRefreshLayout>
+</LinearLayout>
