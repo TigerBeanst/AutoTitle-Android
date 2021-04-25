@@ -8,16 +8,16 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.slider.Slider
 import com.google.gson.Gson
 import com.jakting.autotitle.R
 import com.jakting.autotitle.api.data.AutoTitleObject
 import com.jakting.autotitle.api.data.NewObject
 import com.jakting.autotitle.api.parse.getAutoTitleMethod
 import com.jakting.autotitle.utils.RetrofitCallback
-import com.jakting.autotitle.utils.tools.GlideImageGetter
-import com.jakting.autotitle.utils.tools.delHTMLTag
-import com.jakting.autotitle.utils.tools.getErrorString
-import com.jakting.autotitle.utils.tools.logd
+import com.jakting.autotitle.utils.tools.*
+import com.zqc.opencc.android.lib.ChineseConverter
+import com.zqc.opencc.android.lib.ConversionType
 import kotlinx.android.synthetic.main.activity_read.*
 import kotlinx.android.synthetic.main.layout_sheet_read.view.*
 
@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.layout_sheet_read.view.*
 class ReadActivity : AppCompatActivity() {
 
     lateinit var newObject: NewObject
+    var openCC = "sc"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,17 +87,51 @@ class ReadActivity : AppCompatActivity() {
         })
     }
 
+    private fun clickText() {
+        val view: View =
+            LayoutInflater.from(this).inflate(R.layout.layout_sheet_read, null)
+        val bottomDialog = BottomSheetDialog(view.context)
+        bottomDialog.setContentView(view)
+        val mBehavior: BottomSheetBehavior<*> =
+            BottomSheetBehavior.from(view.parent as View)
+        mBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        mBehavior.peekHeight = 0
+        bottomDialog.show()
+        view.sheet_read_font_sc.setOnClickListener {
+            if (openCC != "sc") {
+                val scContent =
+                    ChineseConverter.convert(newObject.content, ConversionType.T2S, this)
+                read_content.text = Html.fromHtml(scContent, GlideImageGetter(read_content), null)
+                openCC = "sc"
+            }
+        }
+        view.sheet_read_font_tc.setOnClickListener {
+            if (openCC != "tc") {
+                val tcContent =
+                    ChineseConverter.convert(newObject.content, ConversionType.S2T, this)
+                read_content.text = Html.fromHtml(tcContent, GlideImageGetter(read_content), null)
+                openCC = "tc"
+            }
+        }
+        view.sheet_read_text_default.setOnClickListener {
+            toast(getString(R.string.read_autotitle_actionbar_text_size_default_toast))
+            read_content.textSize = 18F
+        }
+        view.sheet_read_font_slider.addOnSliderTouchListener(object :
+            Slider.OnSliderTouchListener {
+            override fun onStopTrackingTouch(slider: Slider) {
+                toast(getString(R.string.read_autotitle_actionbar_text_size_set) + slider.value)
+                read_content.textSize = slider.value
+            }
+
+            override fun onStartTrackingTouch(slider: Slider) {}
+        })
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.read_autotitle_actionbar_text -> {
-                val view: View =
-                    LayoutInflater.from(this).inflate(R.layout.layout_sheet_read, null)
-                val bottomDialog = BottomSheetDialog(view.context)
-                bottomDialog.setContentView(view)
-                val mBehavior: BottomSheetBehavior<*> = BottomSheetBehavior.from(view.parent as View)
-                mBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-                mBehavior.peekHeight = 0;
-                bottomDialog.show()
+                clickText()
                 true
             }
             R.id.read_autotitle_actionbar_share -> {
