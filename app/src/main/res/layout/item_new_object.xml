@@ -46,7 +46,7 @@
                 android:id="@+id/new_text_line"
                 android:layout_width="55dp"
                 android:layout_height="3dp"
-                android:background="@color/colorBackground"
+                android:background="@color/colorCardText"
                 android:orientation="vertical" />
 
             <TextView
@@ -56,7 +56,7 @@
                 android:fontFamily="@font/notoserifsc_semibold"
                 android:includeFontPadding="false"
                 android:text="@{String.valueOf(newObject.src)}"
-                android:textColor="@color/colorBackground"
+                android:textColor="@color/colorCardText"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -69,7 +69,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/notoserifsc_bold"
             android:text="@{String.valueOf(newObject.title)}"
-            android:textColor="@color/colorBackground"
+            android:textColor="@color/colorCardText"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/new_divider"
             app:layout_constraintStart_toStartOf="@id/new_divider" />
