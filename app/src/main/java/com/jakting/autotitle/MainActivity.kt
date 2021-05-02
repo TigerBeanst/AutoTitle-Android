@@ -1,18 +1,20 @@
 package com.jakting.autotitle
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jakting.autotitle.api.data.UserInfo
+import com.jakting.autotitle.api.parse.getUserInfoMethod
 import com.jakting.autotitle.ui.category.CategoryFragment
 import com.jakting.autotitle.ui.headline.HeadlineFragment
 import com.jakting.autotitle.ui.my.MyFragment
-import com.jakting.autotitle.utils.MyApplication
 import com.jakting.autotitle.utils.MyApplication.Companion.sp
 import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
+import com.jakting.autotitle.utils.MyApplication.Companion.userInfo
+import com.jakting.autotitle.utils.RetrofitCallback
 import com.jakting.autotitle.utils.tools.logd
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -69,6 +69,7 @@ dependencies {
     implementation 'com.github.simonpercic:oklog3:2.3.0'
     implementation 'com.zqc.opencc.android.lib:lib-opencc-android:1.1.0'
     implementation 'com.github.mmin18:realtimeblurview:1.2.1'
+    implementation 'liji.library.dev:citypickerview:5.2.4'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

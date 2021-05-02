@@ -1,7 +1,6 @@
 package com.jakting.autotitle.utils.tools
 
 import android.graphics.drawable.Drawable
-import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.ImageButton
@@ -9,6 +8,9 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.snackbar.Snackbar
 import com.jakting.autotitle.utils.MyApplication.Companion.appContext
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.io.InputStream
 
 
 fun logd(message: String) =
@@ -50,4 +52,16 @@ fun Toolbar.getToolBarItemView(drawable: Drawable?): View? {
         }
     }
     return null
+}
+
+@Throws(IOException::class)
+fun getBytes(`is`: InputStream): ByteArray {
+    val byteBuff = ByteArrayOutputStream()
+    val buffSize = 1024
+    val buff = ByteArray(buffSize)
+    var len = 0
+    while (`is`.read(buff).also { len = it } != -1) {
+        byteBuff.write(buff, 0, len)
+    }
+    return byteBuff.toByteArray()
 }

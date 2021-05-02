@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.ReadActivity"></activity>
+        <activity android:name=".ui.my.profile.ProfileActivity"></activity>
+        <activity android:name=".ui.ReadActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

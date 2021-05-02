@@ -13,6 +13,7 @@ import com.jakting.autotitle.utils.tools.longtoast
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
 
@@ -111,6 +112,31 @@ interface ApiParse {
     fun getUserInfo(
         @Header("Authorization") access_token: String
     ): Observable<UserInfo>
+
+    /**
+     * 修改用户信息
+     * @param access_token String
+     * @param requestBody RequestBody
+     * @return Observable<UserInfoUpdate>
+     */
+    @POST("user/info")
+    fun updateUserInfo(
+        @Header("Authorization") access_token: String,
+        @Body requestBody: RequestBody
+    ): Observable<UserInfoUpdate>
+
+    /**
+     * 上传头像
+     * @param access_token String
+     * @param avatar Part
+     * @return Observable<UserAvatarBody>
+     */
+    @Multipart
+    @POST("user/avatar")
+    fun updateUserAvatar(
+        @Header("Authorization") access_token: String,
+        @Part avatar: MultipartBody.Part
+    ): Observable<UserAvatarBody>
 
     /**
      * 获取新闻
