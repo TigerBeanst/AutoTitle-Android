@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         setContentView(R.layout.activity_main)
         viewPaper.addOnPageChangeListener(this)
         nav_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        viewPaper.offscreenPageLimit = 4
         viewPaper.adapter = object :
             FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
             override fun getItem(position: Int): Fragment {
