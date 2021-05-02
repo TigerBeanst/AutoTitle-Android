@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">AutoTitle 新闻摘要</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="no_empty">请勿输入空内容</string>
     <string name="token_fail">鉴权状态异常，请重新登录</string>
     <string name="server_fail">无法连接至服务器</string>
 
@@ -55,4 +59,36 @@
     <string name="category_chip_group_14">女性</string>
     <string name="category_chip_group_15">健康</string>
     <string name="category_chip_group_16">育儿</string>
+
+    <!-- 我的页面 -->
+    <string name="my_main_text_title">我的账号</string>
+    <string name="my_profile_text_title">个人信息</string>
+    <string name="my_profile_group_1_text_title">基础资料</string>
+    <string name="my_profile_group_1_text_title_1">头像</string>
+    <string name="my_profile_group_1_text_title_2">昵称</string>
+    <string name="my_profile_group_1_text_title_2_more">修改昵称</string>
+    <string name="my_profile_group_1_text_title_3">用户名</string>
+    <string name="my_profile_group_1_text_title_3_more">不支持修改用户名，已复制到剪贴板</string>
+    <string name="my_profile_group_1_text_title_4">ID</string>
+    <string name="my_profile_group_1_text_title_4_more">不支持修改ID，已复制到剪贴板</string>
+    <string name="my_profile_group_2_text_title">详细资料</string>
+    <string name="my_profile_group_2_text_title_1">性别</string>
+    <string name="my_profile_group_2_text_title_1_more">修改性别</string>
+    <string name="my_profile_group_2_text_title_1_male">男</string>
+    <string name="my_profile_group_2_text_title_1_female">女</string>
+    <string name="my_profile_group_2_text_title_2">地区</string>
+    <string name="my_profile_group_2_text_title_3">个人签名</string>
+    <string name="my_profile_group_2_text_title_3_more">修改个人签名</string>
+    <string name="my_profile_update">已成功修改</string>
+
+    <string name="my_privacy_text_title">隐私设置</string>
+    <string name="my_privacy_group_text_title">谁可以看我</string>
+    <string name="my_privacy_group_text_title_1">我的评论</string>
+    <string name="my_privacy_group_text_title_2">我的收藏单</string>
+    <string name="my_privacy_group_text_title_3">我的点赞</string>
+    <string name="my_privacy_select_1">所有人</string>
+    <string name="my_privacy_select_2">互相关注的人</string>
+    <string name="my_privacy_select_3">我关注的人</string>
+    <string name="my_privacy_select_4">我的粉丝</string>
+    <string name="my_privacy_select_5">仅自己</string>
 </resources>
