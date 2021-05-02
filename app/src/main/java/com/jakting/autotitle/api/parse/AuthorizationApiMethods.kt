@@ -3,7 +3,9 @@ package com.jakting.autotitle.api.parse
 import com.jakting.autotitle.api.accessAPI
 import com.jakting.autotitle.api.data.AccessTokenBody
 import com.jakting.autotitle.api.data.TokenBody
+import com.jakting.autotitle.api.data.UserInfo
 import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
+import com.jakting.autotitle.utils.MyApplication.Companion.userInfo
 import com.jakting.autotitle.utils.RetrofitCallback
 import com.jakting.autotitle.utils.tools.bearer
 import com.jakting.autotitle.utils.tools.getPostBody
@@ -35,7 +37,19 @@ fun getAccessTokenMethod(callback: RetrofitCallback) {
             getAccessToken(bearer(tokenBody.refresh_token))
         }, { objectReturn ->
             val accessTokenBody = objectReturn as AccessTokenBody
-            callback.onSuccess(accessTokenBody)
+            tokenBody.access_token = accessTokenBody.access_token
+            logd("所返回的token为：${accessTokenBody.access_token}")
+            getUserInfoMethod(object : RetrofitCallback {
+                override fun onSuccess(value: Any) {
+                    userInfo = value as UserInfo
+                    callback.onSuccess(accessTokenBody)
+                }
+
+                override fun onError(t: Throwable) {
+
+                }
+
+            })
         }) { t ->
         logd("onError // getRefreshTokenMethod")
         callback.onError(t)

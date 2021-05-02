@@ -109,16 +109,7 @@ class SplashActivity : AppCompatActivity() {
                             spe.putBoolean("isLogin", true)
                             spe.apply()
                             //请求用户数据
-                            getUserInfoMethod(object : RetrofitCallback {
-                                override fun onSuccess(value: Any) {
-                                    intentToMainActivity()
-                                }
-
-                                override fun onError(t: Throwable) {
-                                    TODO("Not yet implemented")
-                                }
-
-                            })
+                            intentToMainActivity()
                         }
 
                         override fun onError(t: Throwable) {
