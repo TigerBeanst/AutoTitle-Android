@@ -6,15 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.jakting.autotitle.api.data.UserInfo
-import com.jakting.autotitle.api.parse.getUserInfoMethod
 import com.jakting.autotitle.ui.category.CategoryFragment
 import com.jakting.autotitle.ui.headline.HeadlineFragment
 import com.jakting.autotitle.ui.my.MyFragment
+import com.jakting.autotitle.ui.search.SearchFragment
 import com.jakting.autotitle.utils.MyApplication.Companion.sp
 import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
-import com.jakting.autotitle.utils.MyApplication.Companion.userInfo
-import com.jakting.autotitle.utils.RetrofitCallback
 import com.jakting.autotitle.utils.tools.logd
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,6 +19,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
     private val headlineFragment: HeadlineFragment = HeadlineFragment()
     private val categoryFragment: CategoryFragment = CategoryFragment()
+    private val searchFragment: SearchFragment = SearchFragment()
     private val myFragment: MyFragment = MyFragment()
 
 
@@ -45,6 +43,10 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
                         return categoryFragment
                     }
                     2 -> {
+                        logd("searchFragment")
+                        return searchFragment
+                    }
+                    3 -> {
                         logd("myFragment")
                         return myFragment
                     }
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
             }
 
             override fun getCount(): Int {
-                return 3
+                return 4
             }
         }
     }

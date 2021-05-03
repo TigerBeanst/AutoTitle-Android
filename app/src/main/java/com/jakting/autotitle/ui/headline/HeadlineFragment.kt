@@ -15,20 +15,16 @@ import com.drake.brv.utils.models
 import com.drake.brv.utils.setup
 import com.google.gson.Gson
 import com.jakting.autotitle.R
-import com.jakting.autotitle.api.data.AccessTokenBody
 import com.jakting.autotitle.api.data.NewObject
 import com.jakting.autotitle.api.data.News
-import com.jakting.autotitle.api.data.UserInfo
 import com.jakting.autotitle.api.parse.getAccessTokenMethod
 import com.jakting.autotitle.api.parse.getNewsListMethod
-import com.jakting.autotitle.api.parse.getUserInfoMethod
 import com.jakting.autotitle.ui.ReadActivity
 import com.jakting.autotitle.utils.MyApplication.Companion.tokenBody
-import com.jakting.autotitle.utils.MyApplication.Companion.userInfo
 import com.jakting.autotitle.utils.RetrofitCallback
-import com.jakting.autotitle.utils.tools.getErrorStatusCode
 import com.jakting.autotitle.utils.tools.logd
 import kotlinx.android.synthetic.main.fragment_headline.*
+
 
 class HeadlineFragment : Fragment() {
 
@@ -115,25 +111,9 @@ class HeadlineFragment : Fragment() {
             }
 
             override fun onError(t: Throwable) {
-                logd("错误码是${getErrorStatusCode(t)}")
-                if (getErrorStatusCode(t) == 401) {
-                    //access_token炸了
-                    getAccessTokenMethod(object : RetrofitCallback {
-                        override fun onSuccess(value: Any) {
-                            val refreshTokenBody = value as AccessTokenBody
-                            tokenBody.access_token = refreshTokenBody.access_token
-                        }
 
-                        override fun onError(t: Throwable) {
-                            TODO("Not yet implemented")
-                        }
-
-                    })
-                }
             }
 
         })
     }
-
-
 }

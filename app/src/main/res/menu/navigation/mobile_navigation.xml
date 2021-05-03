@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_category" />
 
     <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.jakting.autotitle.ui.search.SearchFragment"
+        android:label="@string/main_bottom_title_search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
         android:id="@+id/navigation_my"
         android:name="com.jakting.autotitle.ui.my.MyFragment"
         android:label="@string/main_bottom_title_my"

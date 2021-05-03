@@ -24,6 +24,7 @@ fun getUserInfoMethod(callback: RetrofitCallback) {
         }) { t ->
         logd("onError // getUserInfo")
         callback.onError(t)
+        getUserInfoMethod(callback)
     }
 }
 
@@ -38,6 +39,7 @@ fun updateUserInfoMethod(requestBody: RequestBody, callback: RetrofitCallback) {
         }) { t ->
         logd("onError // updateUserInfo")
         callback.onError(t)
+        updateUserInfoMethod(requestBody, callback)
     }
 }
 
@@ -50,5 +52,6 @@ fun updateUserAvatarMethod(part: MultipartBody.Part, callback: RetrofitCallback)
         }) { t ->
         logd("onError // updateUserAvatar")
         callback.onError(t)
+        updateUserAvatarMethod(part, callback)
     }
 }

@@ -1,0 +1,88 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_layout"
+    android:layout_width="match_parent"
+    android:layout_height="250dp">
+
+    <ImageView
+        android:id="@+id/search_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient"
+        android:shadowColor="@color/colorBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/search_text_line"
+            android:layout_width="55dp"
+            android:layout_height="3dp"
+            android:background="@color/colorCardText"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/search_text_src"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notoserifsc_semibold"
+            android:includeFontPadding="false"
+            android:text=""
+            android:textColor="@color/colorCardText"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/search_text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/notoserifsc_bold"
+        android:text="标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题"
+        android:textColor="@color/colorCardText"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/search_text_autotitle"
+        app:layout_constraintStart_toStartOf="@id/search_text_autotitle" />
+
+    <TextView
+        android:id="@+id/search_text_autotitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/notoserifsc_light"
+        android:text="@string/search_main_autotitle_loading"
+        android:textStyle="italic"
+        android:textColor="@color/colorCardText"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/search_divider"
+        app:layout_constraintStart_toStartOf="@id/search_divider" />
+
+    <View
+        android:id="@+id/search_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

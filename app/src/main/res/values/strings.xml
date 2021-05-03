@@ -22,6 +22,7 @@
     <!-- 主页面 -->
     <string name="main_bottom_title_headline">头条</string>
     <string name="main_bottom_title_category">栏目</string>
+    <string name="main_bottom_title_search">搜索</string>
     <string name="main_bottom_title_my">我的</string>
 
     <!--文章页面-->
@@ -59,6 +60,11 @@
     <string name="category_chip_group_14">女性</string>
     <string name="category_chip_group_15">健康</string>
     <string name="category_chip_group_16">育儿</string>
+
+    <!-- 搜索页面 -->
+    <string name="search_main_text_title">搜索新闻</string>
+    <string name="search_main_text_title_result">搜索结果</string>
+    <string name="search_main_autotitle_loading">生成中……</string>
 
     <!-- 我的页面 -->
     <string name="my_main_text_title">我的账号</string>

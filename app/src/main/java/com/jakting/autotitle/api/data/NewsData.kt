@@ -30,34 +30,44 @@ data class NewResult(
     var result: NewList
 )
 
-data class NewSearchObject(
-    var title: String,
-    var time: String,
-    var src: String,
-    var pic: String,
-    var url: String,
-    var weburl: String,
-    var content: String,
-    var gallery: String,
-    var addtime: Int
-)
-
-data class NewSearchList(
-    var keyword: String,
-    var num: Int,
-    var list: List<NewSearchObject>
-)
-
-data class NewSearchResult(
-    var status: Int,
-    var msg: String,
-    var result: NewSearchList
-)
-
 data class News(
     var code: String,
     var charge: String,
     var msg: String,
     var requestId: String,
     var result: NewResult
+)
+
+data class NewsSearch(
+    val charge: Boolean,
+    val code: String,
+    val msg: String,
+    val requestId: String,
+    val result: NewsSearchResult
+)
+
+data class NewsSearchResult(
+    val msg: String,
+    val result: NewsSearchResultResult,
+    val status: Int
+)
+
+data class NewsSearchResultResult(
+    val keyword: String,
+    val list: List<NewsSearchResultResultObject>,
+    val num: Int
+)
+
+data class NewsSearchResultResultObject(
+    val addtime: Int,
+    val category: String,
+    val content: String,
+    val gallery: String,
+    val pic: String,
+    val src: String,
+    val time: String,
+    val title: String,
+    val url: String,
+    val weburl: String,
+    var autotitle: String
 )

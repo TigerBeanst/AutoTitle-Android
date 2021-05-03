@@ -34,9 +34,7 @@ class ReadActivity : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar!!.title = getString(R.string.read_autotitle_actionbar_title)
-            toolbar.setNavigationOnClickListener {
-
-            }
+            toolbar.setNavigationOnClickListener {}
         }
         newObject = Gson().fromJson(intent.getStringExtra("newObject"), NewObject::class.java)
         initView()

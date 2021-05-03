@@ -79,6 +79,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun intentToMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun showEverything() {

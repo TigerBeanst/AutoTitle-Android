@@ -14,8 +14,14 @@
         android:title="@string/main_bottom_title_category" />
 
     <item
-        android:id="@+id/navigation_my"
+        android:id="@+id/navigation_search"
         android:orderInCategory="2"
+        android:icon="@drawable/ic_outline_search_24"
+        android:title="@string/main_bottom_title_search" />
+
+    <item
+        android:id="@+id/navigation_my"
+        android:orderInCategory="3"
         android:icon="@drawable/ic_outline_account_circle"
         android:title="@string/main_bottom_title_my" />
 

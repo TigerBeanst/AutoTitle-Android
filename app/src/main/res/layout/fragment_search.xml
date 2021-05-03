@@ -6,35 +6,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/headline_appbar"
+        android:id="@+id/search_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <FrameLayout
-            android:id="@+id/headline_toolbar_container"
+            android:id="@+id/search_toolbar_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/headline_toolbar"
+                android:id="@+id/search_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorBackground"
-                app:title="@string/app_name"
+                app:title="@string/search_main_text_title"
                 android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
+            <com.ferfalk.simplesearchview.SimpleSearchView
+                android:id="@+id/search_searchView"
+                android:hint="@string/main_bottom_title_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary" />
         </FrameLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
     <com.drake.brv.PageRefreshLayout
-        android:id="@+id/headline_refreshLayout"
+        android:id="@+id/search_refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:stateEnabled="true"
-        tools:context=".ui.headline.HeadlineFragment">
+        tools:context=".ui.search.searchFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/headline_recyclerView"
+            android:id="@+id/search_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

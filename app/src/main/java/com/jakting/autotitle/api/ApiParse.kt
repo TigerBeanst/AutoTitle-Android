@@ -38,24 +38,16 @@ fun accessAPI(
         }) { t ->
             t.printStackTrace()
             try {
-                if (getErrorStatusCode(t) == 401) {
+                if (getErrorStatusCode(t) == 401 || getErrorStatusCode(t) == 422) {
                     logd("需要刷新access_token炸了")
+                    logd("=====当前refresh_token为"+tokenBody.refresh_token)
                     // access_token炸了，需要刷新
                     getAccessTokenMethod(object : RetrofitCallback {
                         override fun onSuccess(value: Any) {
                             val refreshTokenBody = value as AccessTokenBody
                             tokenBody.access_token = refreshTokenBody.access_token
-                            accessAPI(
-                                {
-                                    useAPI()
-                                }, { AnyApiObject ->
-                                    onSuccess(AnyApiObject)
-                                }) { tt ->
-                                logd("onError // getRefreshTokenMethod")
-                                onError(tt)
-                            }
+                            logd("=====当前access_token为"+tokenBody.access_token)
                         }
-
                         override fun onError(t: Throwable) {
 
                         }
@@ -153,6 +145,18 @@ interface ApiParse {
         @Path("start") start: String,
         @Path("count") count: String
     ): Observable<News>
+
+    /**
+     * 搜索新闻
+     * @param access_token String
+     * @param requestBody RequestBody
+     * @return Observable<NewsSearch>
+     */
+    @POST("data/news/search")
+    fun searchNews(
+        @Header("Authorization") access_token: String,
+        @Body requestBody: RequestBody
+    ): Observable<NewsSearch>
 
     /**
      * 获取摘要
